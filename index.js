@@ -39,6 +39,7 @@ var _this = this;
     var loadVpois, VPOISUI, IsNOTAvailable, IsAvailable, renderVpois, init;
     var _this = this;
     return __generator(this, function (_a) {
+        console.log("The script works");
         loadVpois = function () { return __awaiter(_this, void 0, void 0, function () {
             var res, vpois, error_1;
             return __generator(this, function (_a) {
@@ -60,6 +61,7 @@ var _this = this;
             });
         }); };
         VPOISUI = document.createElement("div");
+        VPOISUI.style.cssText = "\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  gap: 10px;\n  width: 100%;\n";
         IsNOTAvailable = "<span style=\"color:red\">x</span>";
         IsAvailable = "<span style=\"color:green\">\u2713</span>";
         renderVpois = function (vpois) {

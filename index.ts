@@ -7,6 +7,7 @@ interface IVpois {
 }
 
 (async () => {
+  console.log("The script works")
   const loadVpois = async (): Promise<IVpois[] | null> => {
     try {
       const res: Response = await fetch(
@@ -19,11 +20,19 @@ interface IVpois {
     }
   };
   const VPOISUI: HTMLDivElement = document.createElement("div");
+  VPOISUI.style.cssText = `
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+`;
   const IsNOTAvailable: string = `<span style="color:red">x</span>`;
   const IsAvailable: string = `<span style="color:green">✓</span>`;
   const renderVpois = (vpois: IVpois[]): void => {
     vpois.forEach((vpoi: IVpois) => {
       const vpoiDiv: HTMLDivElement = document.createElement("div");
+
       vpoiDiv.innerHTML = `
       <div style="border:1px solid black; margin:1px; padding:4px">
               <h3>${vpoi.isAvailable ? IsAvailable : IsNOTAvailable} ${
