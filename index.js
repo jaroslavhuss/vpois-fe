@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 (function () { return __awaiter(_this, void 0, void 0, function () {
-    var loadVpois, VPOISUI, IsNOTAvailable, IsAvailable, renderVpois, init;
+    var loadVpois, VPOISUI, IsNOTAvailable, IsAvailable, returnTable, renderVpois, init;
     var _this = this;
     return __generator(this, function (_a) {
         console.log("The script works");
@@ -61,15 +61,16 @@ var _this = this;
             });
         }); };
         VPOISUI = document.createElement("div");
-        VPOISUI.style.cssText = "\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  gap: 10px;\n  width: 100%;\n";
+        VPOISUI.style.cssText = "\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  gap: 10px;\n  width: 100%;\n";
         IsNOTAvailable = "<span style=\"color:red\">x</span>";
         IsAvailable = "<span style=\"color:green\">\u2713</span>";
+        returnTable = function (name, availability, url) {
+            return "\n    <div style=\"display:flex;flex-direction:row; width:100%; flex-wrap: nowrap;justify-content: space-between; padding:4px; margin:4px; border-bottom:2px solid black;\">\n\n       <div>".concat(availability ? IsAvailable : IsNOTAvailable, " ").concat(name, "</div>\n      <div><a target=\"_blank\" href=\"").concat(url, "\">SPC/PIL</a></div>\n  </div>\n    ");
+        };
         renderVpois = function (vpois) {
             vpois.forEach(function (vpoi) {
                 var vpoiDiv = document.createElement("div");
-                vpoiDiv.innerHTML = "\n      <div style=\"border:1px solid black; margin:1px; padding:4px\">\n              <h3>".concat(vpoi.isAvailable ? IsAvailable : IsNOTAvailable, " ").concat(vpoi.name, "</h3>\n              <p>").concat(vpoi.status, "</p>\n              <p>").concat(vpoi.isAvailable
-                    ? "Přípravek dodáván na trh v České republice"
-                    : "Přípravek není dodáván na trh v České republice", "</p>\n              <a href=").concat(vpoi.url, " target=\"_blank\">SPC/PIL ke sta\u017Een\u00ED na S\u00DAKL</a>\n              <div>\n          ");
+                vpoiDiv.innerHTML = "\n      <div style=\"margin:1px; padding:4px\">\n       ".concat(returnTable(vpoi.name, vpoi.isAvailable, vpoi.url));
                 VPOISUI.appendChild(vpoiDiv);
             });
         };
@@ -87,7 +88,7 @@ var _this = this;
                         }
                         else {
                             errorDiv = document.createElement("div");
-                            errorDiv.innerHTML = "\n          <h3>Produkty VPOIS nemohly b\u00FDt bezpe\u010Dn\u011B na\u010Dteny. Zkontrolujte, \u017Ee nejste schovan\u00ED za blokovanou IP adresou.</h3>\n      ";
+                            errorDiv.innerHTML = "\n          <h3>Produkty VPOIS nemohly b\u00FDt bezpe\u010Dn\u011B na\u010Dteny. Zkontrolujte, \u017Ee nejste schovan\u00ED za blokovanou IP adresou.</h3>\n          <p><a href=\"https://prehledy.sukl.cz/prehled_leciv.html#/\" target=\"_blank\">P\u0159ej\u00EDt na S\u00DAKL pro vyhled\u00E1v\u00E1n\u00ED VPOIS</a></p>\n      ";
                             VPOISUI.appendChild(errorDiv);
                         }
                         return [2 /*return*/];

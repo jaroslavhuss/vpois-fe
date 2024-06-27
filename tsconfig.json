@@ -1,6 +1,6 @@
 
   {
     "compilerOptions": {
-      "lib": [ "es2015", "dom", "es2015.promise" ],
+      "lib": [ "ES2015", "DOM", "ES2015.Promise" ],
     }
   }
